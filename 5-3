@@ -1,0 +1,70 @@
+import java.util.Scanner;
+
+public class Time {
+    private int hours;
+    private int minutes;
+    private int seconds;
+
+    public Time() {
+        this.hours = 0;
+        this.minutes = 0;
+        this.seconds = 0;
+    }
+
+    public Time(int hours, int minutes, int seconds) {
+        this.hours = hours;
+        this.minutes = minutes;
+        this.seconds = seconds;
+    }
+
+    public void displayTime() {
+        System.out.printf("%02d:%02d:%02d\n", hours, minutes, seconds);
+    }
+
+    public Time add(Time other) {
+        int totalSeconds = this.toSeconds() + other.toSeconds();
+        return Time.fromSeconds(totalSeconds);
+    }
+    private int toSeconds() {
+        return hours * 3600 + minutes * 60 + seconds;
+    }
+
+    private static Time fromSeconds(int totalSeconds) {
+        int hours = totalSeconds / 3600;
+        int minutes = (totalSeconds % 3600) / 60;
+        int seconds = totalSeconds % 60;
+        return new Time(hours, minutes, seconds);
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Enter first time:");
+        System.out.print("Hours: ");
+        int h1 = sc.nextInt();
+        System.out.print("Minutes: ");
+        int m1 = sc.nextInt();
+        System.out.print("Seconds: ");
+        int s1 = sc.nextInt();
+        Time t1 = new Time(h1, m1, s1);
+
+        System.out.println("Enter second time:");
+        System.out.print("Hours: ");
+        int h2 = sc.nextInt();
+        System.out.print("Minutes: ");
+        int m2 = sc.nextInt();
+        System.out.print("Seconds: ");
+        int s2 = sc.nextInt();
+        Time t2 = new Time(h2, m2, s2);
+
+        System.out.print("Time 1: ");
+        t1.displayTime();
+        System.out.print("Time 2: ");
+        t2.displayTime();
+
+        Time sum = t1.add(t2);
+        System.out.print("Sum of Time 1 and Time 2: ");
+        sum.displayTime();
+
+    }
+}
