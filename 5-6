@@ -1,0 +1,61 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Scanner;
+
+public class Book {
+    private String title;
+    private String author;
+    private int edition;
+
+ 
+    public Book(String title, String author, int edition) {
+        this.title = title;
+        this.author = author;
+        this.edition = edition;
+    }
+
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public int getEdition() {
+        return edition;
+    }
+
+
+    public void display() {
+        System.out.println("Title: " + title + ", Author: " + author + ", Edition: " + edition);
+    }
+
+ 
+    public static void main(String[] args) {
+        List<Book> books = new ArrayList<>();
+        books.add(new Book("Book A", "Author X", 1));
+        books.add(new Book("Book B", "Author Y", 2));
+        books.add(new Book("Book C", "Author X", 3));
+        books.add(new Book("Book D", "Author Z", 4));
+        books.add(new Book("Book E", "Author Y", 5));
+        books.add(new Book("Book F", "Author X", 6));
+
+    
+        Collections.sort(books, Comparator.comparing(Book::getTitle));
+
+        Scanner sc= new Scanner(System.in);
+        System.out.print("Enter author name to search: ");
+        String author = sc.nextLine();
+
+        for (Book book : books) {
+            if (book.getAuthor().equalsIgnoreCase(author)) {
+                book.display();
+            }
+        }
+
+    }
+}
