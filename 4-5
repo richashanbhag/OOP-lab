@@ -1,0 +1,77 @@
+import java.util.Scanner;
+
+class Question5 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int a[][] = new int[20][20];
+        int rows, cols, sum = 0, secondaryDiag = 0;
+        int rowSum = 0, colSum = 0;
+        boolean isMagic = true;
+
+        System.out.println("Enter the number of rows and columns:");
+        rows = sc.nextInt();
+        cols = sc.nextInt();
+
+        if (rows != cols) {
+            System.out.println("Number of rows and columns should be the same. Enter valid numbers");
+            return;
+        }
+
+        System.out.println("Enter the elements:");
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                a[i][j] = sc.nextInt();
+            }
+        }
+
+        for (int j = 0; j < cols; j++) {
+            rowSum += a[0][j];
+        }
+
+        for (int i = 1; i < rows; i++) {
+            int currentRowSum = 0;
+            for (int j = 0; j < cols; j++) {
+                currentRowSum += a[i][j];
+            }
+            if (currentRowSum != rowSum) {
+                isMagic = false;
+                break;
+            }
+        }
+
+        for (int j = 0; j < cols; j++) {
+            int currentColSum = 0;
+            for (int i = 0; i < rows; i++) {
+                currentColSum += a[i][j];
+            }
+            if (currentColSum != rowSum) { 
+                isMagic = false;
+                break;
+            }
+        }
+
+        
+        for (int i = 0; i < rows; i++) {
+            sum += a[i][i];
+        }
+        if (sum != rowSum) {
+            isMagic = false;
+        }
+
+        
+        sum = 0;
+        for (int i = 0; i < rows; i++) {
+            sum += a[i][cols - 1 - i];
+        }
+        if (sum != rowSum) {
+            isMagic = false;
+        }
+
+      
+        if (isMagic) {
+            System.out.println("It is a magic matrix");
+        } else {
+            System.out.println("Not a magic matrix");
+        }
+    }
+}
