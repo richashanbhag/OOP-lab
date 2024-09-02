@@ -1,0 +1,75 @@
+import java.util.Scanner;
+
+class Question4 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int a[][] = new int[20][20], b[][] = new int[20][20], c[][] = new int[20][20], sum[][] = new int[20][20];
+        int p, q, r, s;
+
+        System.out.println("Enter the number of rows and columns of matrix 1:");
+        p = sc.nextInt();  
+        q = sc.nextInt();  
+
+        System.out.println("Enter the number of rows and columns of matrix 2:");
+        r = sc.nextInt();  
+        s = sc.nextInt();  
+
+        if (q != r) {
+            System.out.println("Multiplication cannot be done. Number of columns in matrix 1 should be equal to number of rows in matrix 2");
+            return;  
+        }
+
+        System.out.println("Enter the elements of matrix 1:");
+        for (int i = 0; i < p; i++) {           
+            for (int j = 0; j < q; j++) {       
+                a[i][j] = sc.nextInt();          
+            }
+        }
+
+        System.out.println("Enter the elements of matrix 2:");
+        for (int i = 0; i < r; i++) {           
+            for (int j = 0; j < s; j++) {       
+                b[i][j] = sc.nextInt();         
+            }
+        }
+
+       
+        for (int i = 0; i < p; i++) {            
+            for (int j = 0; j < s; j++) {       
+                c[i][j] = 0;                    
+                for (int k = 0; k < q; k++) {    
+                    c[i][j] = c[i][j] + a[i][k] * b[k][j];  
+                }
+            }
+        }
+
+        
+        System.out.println("Multiplied matrix is:");
+        for (int i = 0; i < p; i++) {           
+            for (int j = 0; j < s; j++) {        
+                System.out.print(c[i][j] + " "); 
+            }
+            System.out.println();               
+        }
+
+        
+        if (p == r && q == s) {
+            for (int i = 0; i < p; i++) {       
+                for (int j = 0; j < q; j++) {    
+                    sum[i][j] = a[i][j] + b[i][j]; 
+                }
+            }
+
+            
+            System.out.println("Sum of the matrices is:");
+            for (int i = 0; i < p; i++) {        
+                for (int j = 0; j < q; j++) {    
+                    System.out.print(sum[i][j] + " "); 
+                }
+                System.out.println();            
+            }
+        } else {
+            System.out.println("Addition cannot be done. Matrices do not have the same dimensions.");
+        }
+    }
+}
