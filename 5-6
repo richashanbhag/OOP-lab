@@ -1,7 +1,3 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
 import java.util.Scanner;
 
 public class Book {
@@ -32,22 +28,28 @@ public class Book {
     }
 
     public static void main(String[] args) {
-        List<Book> books = new ArrayList<>();
-        books.add(new Book("Book A", "Author X", 1));
-        books.add(new Book("Book B", "Author Y", 2));
-        books.add(new Book("Book C", "Author X", 3));
-        books.add(new Book("Book D", "Author Z", 4));
-        books.add(new Book("Book E", "Author Y", 5));
-        books.add(new Book("Book F", "Author X", 6));
-
-        Collections.sort(books, Comparator.comparing(Book::getTitle));
-
-       
         Scanner sc = new Scanner(System.in);
+        Book[] books = new Book[6];
+        books[0] = new Book("Book A", "Author X", 1);
+        books[1] = new Book("Book B", "Author Y", 2);
+        books[2] = new Book("Book C", "Author X", 3);
+        books[3] = new Book("Book D", "Author Z", 4);
+        books[4] = new Book("Book E", "Author Y", 5);
+        books[5] = new Book("Book F", "Author X", 6);
+
+        for (int i = 0; i < books.length - 1; i++) {
+            for (int j = i + 1; j < books.length; j++) {
+                if (books[i].getTitle().compareTo(books[j].getTitle()) > 0) {
+                    Book temp = books[i];
+                    books[i] = books[j];
+                    books[j] = temp;
+                }
+            }
+        }
+
         System.out.print("Enter author name to search: ");
         String author = sc.nextLine();
 
-       
         boolean found = false;
         for (Book book : books) {
             if (book.getAuthor().equalsIgnoreCase(author)) {
@@ -59,7 +61,5 @@ public class Book {
         if (!found) {
             System.out.println("No books found by author " + author);
         }
-
-    
     }
 }
