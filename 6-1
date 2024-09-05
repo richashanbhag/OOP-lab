@@ -1,0 +1,186 @@
+import java.util.Scanner;
+
+class Account {
+    String customerName;
+    int accNo;
+    double balance;
+    String accountType;
+
+    public Account(String customerName, int accNo, String accountType) {
+        this.customerName = customerName;
+        this.accNo = accNo;
+        this.accountType = accountType;
+        this.balance = 0.0;
+    }
+
+    public void deposit(double amount) {
+        balance += amount;
+    }
+
+    public void displayBalance() {
+        System.out.println("Balance: " + balance);
+    }
+
+    public void withdraw(double amount) {
+        if (balance >= amount) {
+            balance -= amount;
+        } else {
+            System.out.println("Insufficient balance.");
+        }
+    }
+}
+
+class SavingsAccount extends Account {
+    public SavingsAccount(String customerName, int accNo) {
+        super(customerName, accNo, "Savings");
+    }
+
+    public void computeInterest(double interestRate) {
+        double interest = balance * interestRate / 100;
+        balance += interest;
+    }
+}
+
+class CurrentAccount extends Account {
+    double minBalance;
+
+    public CurrentAccount(String customerName, int accNo, double minBalance) {
+        super(customerName, accNo, "Current");
+        this.minBalance = minBalance;
+    }
+
+    public void checkMinBalance() {
+        if (balance < minBalance) {
+            double penalty = 100.0;
+            balance -= penalty;
+            System.out.println("Penalty imposed. Balance after penalty: " + balance);
+        }
+    }
+}
+
+public class Question1 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        SavingsAccount[] savingsAccounts = new SavingsAccount[10];
+        CurrentAccount[] currentAccounts = new CurrentAccount[10];
+        int savingsCount = 0;
+        int currentCount = 0;
+
+        while (true) {
+            System.out.println("\n1. Create Savings Account");
+            System.out.println("2. Create Current Account");
+            System.out.println("3. Deposit");
+            System.out.println("4. Withdraw");
+            System.out.println("5. Compute Interest (Savings Account)");
+            System.out.println("6. Check Minimum Balance (Current Account)");
+            System.out.println("7. Display Balance");
+            System.out.println("8. Exit");
+            System.out.print("Choose an option: ");
+            int choice = sc.nextInt();
+            sc.nextLine();  
+
+            switch (choice) {
+                case 1:
+                    System.out.println("Enter customer name:");
+                    String name = sc.nextLine();
+                    System.out.println("Enter account number:");
+                    int accNo = sc.nextInt();
+                    savingsAccounts[savingsCount++] = new SavingsAccount(name, accNo);
+                    System.out.println("Savings account created.");
+                    break;
+
+                case 2:
+                    System.out.println("Enter customer name:");
+                    name = sc.nextLine();
+                    System.out.println("Enter account number:");
+                    accNo = sc.nextInt();
+                    System.out.println("Enter minimum balance:");
+                    double minBalance = sc.nextDouble();
+                    currentAccounts[currentCount++] = new CurrentAccount(name, accNo, minBalance);
+                    System.out.println("Current account created.");
+                    break;
+
+                case 3:
+                    System.out.println("Enter account number:");
+                    accNo = sc.nextInt();
+                    System.out.println("Enter deposit amount:");
+                    double depositAmount = sc.nextDouble();
+                    for (int i = 0; i < savingsCount; i++) {
+                        if (savingsAccounts[i].accNo == accNo) {
+                            savingsAccounts[i].deposit(depositAmount);
+                            System.out.println("Deposit successful.");
+                        }
+                    }
+                    for (int i = 0; i < currentCount; i++) {
+                        if (currentAccounts[i].accNo == accNo) {
+                            currentAccounts[i].deposit(depositAmount);
+                            System.out.println("Deposit successful.");
+                        }
+                    }
+                    break;
+
+                case 4:
+                    System.out.println("Enter account number:");
+                    accNo = sc.nextInt();
+                    System.out.println("Enter withdraw amount:");
+                    double withdrawAmount = sc.nextDouble();
+                    for (int i = 0; i < savingsCount; i++) {
+                        if (savingsAccounts[i].accNo == accNo) {
+                            savingsAccounts[i].withdraw(withdrawAmount);
+                        }
+                    }
+                    for (int i = 0; i < currentCount; i++) {
+                        if (currentAccounts[i].accNo == accNo) {
+                            currentAccounts[i].withdraw(withdrawAmount);
+                        }
+                    }
+                    break;
+
+                case 5:
+                    System.out.println("Enter account number:");
+                    accNo = sc.nextInt();
+                    System.out.println("Enter interest rate:");
+                    double interestRate = sc.nextDouble();
+                    for (int i = 0; i < savingsCount; i++) {
+                        if (savingsAccounts[i].accNo == accNo) {
+                            savingsAccounts[i].computeInterest(interestRate);
+                            System.out.println("Interest computed and added.");
+                        }
+                    }
+                    break;
+
+                case 6:
+                    System.out.println("Enter account number:");
+                    accNo = sc.nextInt();
+                    for (int i = 0; i < currentCount; i++) {
+                        if (currentAccounts[i].accNo == accNo) {
+                            currentAccounts[i].checkMinBalance();
+                        }
+                    }
+                    break;
+
+                case 7:
+                    System.out.println("Enter account number:");
+                    accNo = sc.nextInt();
+                    for (int i = 0; i < savingsCount; i++) {
+                        if (savingsAccounts[i].accNo == accNo) {
+                            savingsAccounts[i].displayBalance();
+                        }
+                    }
+                    for (int i = 0; i < currentCount; i++) {
+                        if (currentAccounts[i].accNo == accNo) {
+                            currentAccounts[i].displayBalance();
+                        }
+                    }
+                    break;
+
+                case 8:
+                    System.exit(0);
+
+                default:
+                    System.out.println("Invalid option.");
+            }
+        }
+    }
+}
