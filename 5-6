@@ -9,13 +9,11 @@ public class Book {
     private String author;
     private int edition;
 
- 
     public Book(String title, String author, int edition) {
         this.title = title;
         this.author = author;
         this.edition = edition;
     }
-
 
     public String getTitle() {
         return title;
@@ -29,12 +27,10 @@ public class Book {
         return edition;
     }
 
-
     public void display() {
         System.out.println("Title: " + title + ", Author: " + author + ", Edition: " + edition);
     }
 
- 
     public static void main(String[] args) {
         List<Book> books = new ArrayList<>();
         books.add(new Book("Book A", "Author X", 1));
@@ -44,18 +40,26 @@ public class Book {
         books.add(new Book("Book E", "Author Y", 5));
         books.add(new Book("Book F", "Author X", 6));
 
-    
         Collections.sort(books, Comparator.comparing(Book::getTitle));
 
-        Scanner sc= new Scanner(System.in);
+       
+        Scanner sc = new Scanner(System.in);
         System.out.print("Enter author name to search: ");
         String author = sc.nextLine();
 
+       
+        boolean found = false;
         for (Book book : books) {
             if (book.getAuthor().equalsIgnoreCase(author)) {
                 book.display();
+                found = true;
             }
         }
 
+        if (!found) {
+            System.out.println("No books found by author " + author);
+        }
+
+    
     }
 }
