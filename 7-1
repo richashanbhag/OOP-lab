@@ -17,6 +17,8 @@ class Student_Detail {
         System.out.println("ID: " + id);
         System.out.println("College Name: " + college_name);
     }
+}
+public class Question1 {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -44,3 +46,5 @@ class Student_Detail {
         
     }
 }
+    
+
