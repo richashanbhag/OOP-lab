@@ -1,23 +1,33 @@
-public class AutoBoxingUnboxing {
-
+public class AutoUnboxingExample {
     public static void main(String[] args) {
-        int num = 10;
-        Integer obj = num; // Autoboxing
+        
+        int primitiveInt = 10;
+        Integer wrapperInt = primitiveInt; // Autoboxing
+        System.out.println("Autoboxed Integer: " + wrapperInt);
 
-        int num2 = obj; // Unboxing
-        System.out.println("Autoboxing: int to Integer - " + obj);
-        System.out.println("Unboxing: Integer to int - " + num2);
+        double primitiveDouble = 20.5;
+        Double wrapperDouble = primitiveDouble; // Autoboxing
+        System.out.println("Autoboxed Double: " + wrapperDouble);
 
-        char ch = 'A';
-        Character objChar = ch; // Autoboxing
-        char ch2 = objChar; // Unboxing
-        System.out.println("Autoboxing: char to Character - " + objChar);
-        System.out.println("Unboxing: Character to char - " + ch2);
+        char primitiveChar = 'A';
+        Character wrapperChar = primitiveChar; // Autoboxing
+        System.out.println("Autoboxed Character: " + wrapperChar);
 
-        double d = 5.5;
-        Double objDouble = d; // Autoboxing
-        double d2 = objDouble; // Unboxing
-        System.out.println("Autoboxing: double to Double - " + objDouble);
-        System.out.println("Unboxing: Double to double - " + d2);
+        boolean primitiveBoolean = true;
+        Boolean wrapperBoolean = primitiveBoolean; // Autoboxing
+        System.out.println("Autoboxed Boolean: " + wrapperBoolean);
+
+        
+        int unboxedInt = wrapperInt; // Unboxing
+        System.out.println("Unboxed Integer: " + unboxedInt);
+
+        double unboxedDouble = wrapperDouble; // Unboxing
+        System.out.println("Unboxed Double: " + unboxedDouble);
+
+        char unboxedChar = wrapperChar; // Unboxing
+        System.out.println("Unboxed Character: " + unboxedChar);
+
+        boolean unboxedBoolean = wrapperBoolean; // Unboxing
+        System.out.println("Unboxed Boolean: " + unboxedBoolean);
     }
 }
