@@ -1,0 +1,94 @@
+import java.util.Scanner;
+
+interface Product {
+    void displayDetails();
+    double calculateSales();
+}
+
+class Hardware implements Product {
+    String category;
+    String manufacturer;
+    double sales[];
+
+    Hardware(String category, String manufacturer, double[] sales) {
+        this.category = category;
+        this.manufacturer = manufacturer;
+        this.sales = sales;
+    }
+
+    public void displayDetails() {
+        System.out.println("Hardware Category: " + category);
+        System.out.println("Manufacturer: " + manufacturer);
+    }
+
+    public double calculateSales() {
+        double total = 0;
+        for (double sale : sales) {
+            total += sale;
+        }
+        return total;
+    }
+}
+
+class Software implements Product {
+    String type;
+    String operatingSystem;
+    double sales[];
+
+    Software(String type, String operatingSystem, double[] sales) {
+        this.type = type;
+        this.operatingSystem = operatingSystem;
+        this.sales = sales;
+    }
+
+    public void displayDetails() {
+        System.out.println("Software Type: " + type);
+        System.out.println("Operating System: " + operatingSystem);
+    }
+
+    public double calculateSales() {
+        double total = 0;
+        for (double sale : sales) {
+            total += sale;
+        }
+        return total;
+    }
+}
+
+public class Question1 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter Hardware Category: ");
+        String hardwareCategory = sc.nextLine();
+        System.out.print("Enter Hardware Manufacturer: ");
+        String hardwareManufacturer = sc.nextLine();
+        double[] hardwareSales = new double[3];
+        System.out.println("Enter sales for Hardware over last 3 months: ");
+        for (int i = 0; i < 3; i++) {
+            hardwareSales[i] = sc.nextDouble();
+        }
+
+        System.out.print("Enter Software Type: ");
+        sc.nextLine(); 
+        String softwareType = sc.nextLine();
+        System.out.print("Enter Operating System: ");
+        String operatingSystem = sc.nextLine();
+        double[] softwareSales = new double[3];
+        System.out.println("Enter sales for Software over last 3 months: ");
+        for (int i = 0; i < 3; i++) {
+            softwareSales[i] = sc.nextDouble();
+        }
+
+        Hardware hardware = new Hardware(hardwareCategory, hardwareManufacturer, hardwareSales);
+        Software software = new Software(softwareType, operatingSystem, softwareSales);
+
+        hardware.displayDetails();
+        System.out.println("Total Hardware Sales: " + hardware.calculateSales());
+        
+        software.displayDetails();
+        System.out.println("Total Software Sales: " + software.calculateSales());
+
+        
+    }
+}
