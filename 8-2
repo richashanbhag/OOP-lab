@@ -1,44 +1,50 @@
 import java.util.Scanner;
-abstract class Area{
- void rectangle(int length,int  breadth)
-{
-    System.out.println("area of rectangle is "+length*breadth); 
-}
-void circle(int radius)
-{
-    System.out.println("area of circle is "+3.14*radius*radius);
-}
-}
-class B extends Area{
 
+abstract class Shape {
+    abstract double area();
 }
-public class Question2 {
-    public static void main(String[] args) {
-        Scanner sc= new Scanner(System.in);
-        while(true){
-        System.out.println("1.Area of rectangle ");
-        System.out.println("2.Area of circle");
-        System.out.println("3.Exit");
-        System.out.println("Enter choice ");
-        int ch=sc.nextInt();
-        switch (ch) {
-            case 1: System.out.println("Enter length and breadth");
-            int length =sc.nextInt();
-            int breadth=sc.nextInt();
-             B r1= new B();
-             r1.rectangle(length, breadth);
-                break;
-            case 2:System.out.println("Enter radius");
-            int radius =sc.nextInt();
-            B c1=new B();
-            c1.circle(radius);
-            break;
-            case 3: return;
-            default:
-                return;
-        } }       
+
+class Rectangle extends Shape {
+    double length, breadth;
+
+    Rectangle(double length, double breadth) {
+        this.length = length;
+        this.breadth = breadth;
     }
-   
 
+    double area() {
+        return length * breadth;
+    }
+}
 
+class Circle extends Shape {
+    double radius;
+
+    Circle(double radius) {
+        this.radius = radius;
+    }
+
+    double area() {
+        return Math.PI * radius * radius;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Rectangle
+        System.out.print("Enter length of rectangle: ");
+        double length = sc.nextDouble();
+        System.out.print("Enter breadth of rectangle: ");
+        double breadth = sc.nextDouble();
+        Shape rectangle = new Rectangle(length, breadth);
+        System.out.println("Area of rectangle: " + rectangle.area());
+
+        // Circle
+        System.out.print("Enter radius of circle: ");
+        double radius = sc.nextDouble();
+        Shape circle = new Circle(radius);
+        System.out.println("Area of circle: " + circle.area());
+    }
 }
