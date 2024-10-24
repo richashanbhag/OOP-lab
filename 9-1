@@ -1,0 +1,34 @@
+import java.util.Scanner;
+
+public class StringAnalysis {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter a string (multiple lines allowed, end input with an empty line):");
+        StringBuilder input = new StringBuilder();
+        String line;
+        while (!(line = sc.nextLine()).isEmpty()) {
+            input.append(line).append("\n");
+        }
+
+        String text = input.toString();
+        int characterCount = text.length();
+        int wordCount = text.trim().split("\\s+").length;
+        int lineCount = text.split("\n").length;
+        int vowelCount = countVowels(text);
+
+        System.out.println("Number of characters: " + characterCount);
+        System.out.println("Number of words: " + wordCount);
+        System.out.println("Number of lines: " + lineCount);
+        System.out.println("Number of vowels: " + vowelCount);
+    }
+
+    public static int countVowels(String text) {
+        int count = 0;
+        for (char c : text.toLowerCase().toCharArray()) {
+            if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u') {
+                count++;
+            }
+        }
+        return count;
+    }
+}
