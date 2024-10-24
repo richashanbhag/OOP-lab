@@ -1,33 +1,81 @@
-public class AutoUnboxingExample {
+public class AutoboxingUnboxingExample {
+
     public static void main(String[] args) {
-        
-        int primitiveInt = 10;
-        Integer wrapperInt = primitiveInt; // Autoboxing
-        System.out.println("Autoboxed Integer: " + wrapperInt);
+        // Autoboxing: Converting primitive types to their corresponding wrapper classes
+        // Integer, Double, Boolean, Character, etc.
 
-        double primitiveDouble = 20.5;
-        Double wrapperDouble = primitiveDouble; // Autoboxing
-        System.out.println("Autoboxed Double: " + wrapperDouble);
+        // int -> Integer
+        int intPrimitive = 10;
+        Integer intObject = intPrimitive;  // Autoboxing
+        System.out.println("Autoboxed Integer: " + intObject);
 
-        char primitiveChar = 'A';
-        Character wrapperChar = primitiveChar; // Autoboxing
-        System.out.println("Autoboxed Character: " + wrapperChar);
+        // double -> Double
+        double doublePrimitive = 15.5;
+        Double doubleObject = doublePrimitive;  // Autoboxing
+        System.out.println("Autoboxed Double: " + doubleObject);
 
-        boolean primitiveBoolean = true;
-        Boolean wrapperBoolean = primitiveBoolean; // Autoboxing
-        System.out.println("Autoboxed Boolean: " + wrapperBoolean);
+        // boolean -> Boolean
+        boolean booleanPrimitive = true;
+        Boolean booleanObject = booleanPrimitive;  // Autoboxing
+        System.out.println("Autoboxed Boolean: " + booleanObject);
 
-        
-        int unboxedInt = wrapperInt; // Unboxing
-        System.out.println("Unboxed Integer: " + unboxedInt);
+        // char -> Character
+        char charPrimitive = 'A';
+        Character charObject = charPrimitive;  // Autoboxing
+        System.out.println("Autoboxed Character: " + charObject);
 
-        double unboxedDouble = wrapperDouble; // Unboxing
-        System.out.println("Unboxed Double: " + unboxedDouble);
+        // float -> Float
+        float floatPrimitive = 20.5f;
+        Float floatObject = floatPrimitive;  // Autoboxing
+        System.out.println("Autoboxed Float: " + floatObject);
 
-        char unboxedChar = wrapperChar; // Unboxing
-        System.out.println("Unboxed Character: " + unboxedChar);
+        // byte -> Byte
+        byte bytePrimitive = 5;
+        Byte byteObject = bytePrimitive;  // Autoboxing
+        System.out.println("Autoboxed Byte: " + byteObject);
 
-        boolean unboxedBoolean = wrapperBoolean; // Unboxing
-        System.out.println("Unboxed Boolean: " + unboxedBoolean);
+        // short -> Short
+        short shortPrimitive = 100;
+        Short shortObject = shortPrimitive;  // Autoboxing
+        System.out.println("Autoboxed Short: " + shortObject);
+
+        // long -> Long
+        long longPrimitive = 10000L;
+        Long longObject = longPrimitive;  // Autoboxing
+        System.out.println("Autoboxed Long: " + longObject);
+
+        // Unboxing: Converting wrapper class objects back to their corresponding primitive types
+
+        // Integer -> int
+        int intValue = intObject;  // Unboxing
+        System.out.println("Unboxed int: " + intValue);
+
+        // Double -> double
+        double doubleValue = doubleObject;  // Unboxing
+        System.out.println("Unboxed double: " + doubleValue);
+
+        // Boolean -> boolean
+        boolean booleanValue = booleanObject;  // Unboxing
+        System.out.println("Unboxed boolean: " + booleanValue);
+
+        // Character -> char
+        char charValue = charObject;  // Unboxing
+        System.out.println("Unboxed char: " + charValue);
+
+        // Float -> float
+        float floatValue = floatObject;  // Unboxing
+        System.out.println("Unboxed float: " + floatValue);
+
+        // Byte -> byte
+        byte byteValue = byteObject;  // Unboxing
+        System.out.println("Unboxed byte: " + byteValue);
+
+        // Short -> short
+        short shortValue = shortObject;  // Unboxing
+        System.out.println("Unboxed short: " + shortValue);
+
+        // Long -> long
+        long longValue = longObject;  // Unboxing
+        System.out.println("Unboxed long: " + longValue);
     }
 }
