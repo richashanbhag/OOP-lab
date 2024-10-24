@@ -5,7 +5,7 @@ public class Question2 {
         Scanner sc = new Scanner(System.in);
         int[] numbers = new int[5];
         
-        System.out.println("Enter 5 numbers:");
+        System.out.println("Enter 6 numbers:");
         
         for (int i = 0; i < 7; i++) {
             try {
