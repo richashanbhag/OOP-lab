@@ -1,0 +1,84 @@
+import java.util.Scanner;
+
+public class Question4 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        System.out.print("Enter first string: ");
+        String firstString = sc.nextLine();
+        
+        System.out.print("Enter second string: ");
+        String secondString = sc.nextLine();
+
+        while (true) {
+            System.out.println("\nMenu:");
+            System.out.println("1. Compare two strings");
+            System.out.println("2. Convert uppercase to lowercase and vice versa");
+            System.out.println("3. Check if one string is a substring of the other");
+            System.out.println("4. Replace substring with 'Hello' if it exists");
+            System.out.println("5. Exit");
+            System.out.print("Choose an option: ");
+            int choice = sc.nextInt();
+            sc.nextLine();  // Consume newline
+
+            switch (choice) {
+                case 1:
+                    System.out.println(compareStrings(firstString, secondString));
+                    break;
+                case 2:
+                    System.out.println("Converted string: " + convertCase(firstString));
+                    break;
+                case 3:
+                    System.out.println(isSubstring(firstString, secondString) ? 
+                        "One string is a substring of the other." : 
+                        "No substring relationship.");
+                    break;
+                case 4:
+                    if (isSubstring(firstString, secondString)) {
+                        System.out.println("New string: " + replaceSubstring(firstString, secondString));
+                    } else {
+                        System.out.println("No substring to replace.");
+                    }
+                    break;
+                case 5:
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+            }
+        }
+    }
+
+    public static String compareStrings(String str1, String str2) {
+        if (str1.equals(str2)) {
+            return "The strings are equal.";
+        } else {
+            return "The strings are not equal.";
+        }
+    }
+
+    public static String convertCase(String str) {
+        char[] converted = new char[str.length()];
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            if (Character.isUpperCase(ch)) {
+                converted[i] = Character.toLowerCase(ch);
+            } else {
+                converted[i] = Character.toUpperCase(ch);
+            }
+        }
+        return new String(converted);
+    }
+
+    public static boolean isSubstring(String str1, String str2) {
+        return str1.contains(str2) || str2.contains(str1);
+    }
+
+    public static String replaceSubstring(String str1, String str2) {
+        if (str1.contains(str2)) {
+            return str1.replace(str2, "Hello");
+        } else {
+            return str2.replace(str1, "Hello");
+        }
+    }
+}
