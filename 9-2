@@ -1,0 +1,22 @@
+import java.util.Scanner;
+
+public class Question2 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        System.out.print("Enter a word: ");
+        String word = sc.nextLine();
+        
+        System.out.print("Enter the character to be replaced: ");
+        char charToReplace = sc.next().charAt(0);
+        
+        System.out.print("Enter the character to replace with: ");
+        char replaceChar = sc.next().charAt(0);
+        
+        System.out.println(replaceCharacters(word, charToReplace, replaceChar));
+    }
+
+    public static String replaceCharacters(String word, char charToReplace, char replaceChar) {
+        return word.replace(charToReplace, replaceChar);
+    }
+}
