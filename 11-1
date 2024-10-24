@@ -28,10 +28,20 @@ public class Question1 {
                 case 1:
                     Thread runnableThread = new Thread(new MyRunnable());
                     runnableThread.start();
+                    try {
+                        runnableThread.join();  // Wait for the thread to finish
+                    } catch (InterruptedException e) {
+                        System.out.println("Thread interrupted.");
+                    }
                     break;
                 case 2:
                     MyThread thread = new MyThread();
                     thread.start();
+                    try {
+                        thread.join();  // Wait for the thread to finish
+                    } catch (InterruptedException e) {
+                        System.out.println("Thread interrupted.");
+                    }
                     break;
                 case 3:
                     System.out.println("Exiting...");
