@@ -1,0 +1,30 @@
+import java.util.Scanner;
+
+class NegativeNumberException extends Exception {
+    public NegativeNumberException(String message) {
+        super(message);
+    }
+}
+
+public class Question6 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        System.out.print("Enter a number: ");
+        double number = sc.nextDouble();
+        
+        try {
+            double root = calculateSquareRoot(number);
+            System.out.println("Square root: " + root);
+        } catch (NegativeNumberException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public static double calculateSquareRoot(double number) throws NegativeNumberException {
+        if (number < 0) {
+            throw new NegativeNumberException("Cannot compute the square root of a negative number.");
+        }
+        return Math.sqrt(number);
+    }
+}
