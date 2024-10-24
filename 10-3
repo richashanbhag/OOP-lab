@@ -1,0 +1,38 @@
+import java.util.Scanner;
+
+public class Question3 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        System.out.print("Enter Student's Name: ");
+        String name = sc.nextLine();
+        
+        System.out.print("Enter Roll Number: ");
+        String rollNumber = sc.nextLine();
+        
+        int[] marks = new int[3];
+        
+        for (int i = 0; i < 3; i++) {
+            while (true) {
+                try {
+                    System.out.print("Enter marks for subject " + (i + 1) + ": ");
+                    marks[i] = Integer.parseInt(sc.nextLine());
+                    if (marks[i] < 0 || marks[i] > 100) {
+                        throw new NumberFormatException();
+                    }
+                    break;
+                } catch (NumberFormatException e) {
+                    System.out.println("Invalid input! Please enter marks between 0 and 100.");
+                }
+            }
+        }
+        
+        double percentage = (marks[0] + marks[1] + marks[2]) / 3.0;
+        String grade = (percentage >= 60) ? "A" : (percentage >= 50) ? "B" : "C";
+        
+        System.out.println("Name: " + name);
+        System.out.println("Roll Number: " + rollNumber);
+        System.out.println("Percentage: " + percentage);
+        System.out.println("Grade: " + grade);
+    }
+}
