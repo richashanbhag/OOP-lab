@@ -1,0 +1,32 @@
+import java.util.Scanner;
+
+class MatrixNotSquareException extends Exception {
+    public MatrixNotSquareException(String message) {
+        super(message);
+    }
+}
+
+public class Question5 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        System.out.print("Enter the number of rows: ");
+        int rows = sc.nextInt();
+        
+        System.out.print("Enter the number of columns: ");
+        int columns = sc.nextInt();
+        
+        try {
+            validateMatrix(rows, columns);
+            System.out.println("The matrix is a square matrix.");
+        } catch (MatrixNotSquareException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public static void validateMatrix(int rows, int columns) throws MatrixNotSquareException {
+        if (rows != columns) {
+            throw new MatrixNotSquareException("The matrix is not a square matrix.");
+        }
+    }
+}
