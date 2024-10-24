@@ -1,0 +1,63 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Counter {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String originalString;
+
+        System.out.print("Enter a string: ");
+        originalString = sc.nextLine();
+
+        while (true) {
+            System.out.println("\nMenu:");
+            System.out.println("1. Check if the string is a palindrome");
+            System.out.println("2. Write the string in alphabetical order");
+            System.out.println("3. Reverse the string");
+            System.out.println("4. Concatenate the original string and the reversed string");
+            System.out.println("5. Exit");
+            System.out.print("Choose an option: ");
+            int choice = sc.nextInt();
+
+            switch (choice) {
+                case 1:
+                    System.out.println(isPalindrome(originalString) ? "The string is a palindrome." : "The string is not a palindrome.");
+                    break;
+                case 2:
+                    System.out.println("Alphabetical order: " + alphabeticalOrder(originalString));
+                    break;
+                case 3:
+                    System.out.println("Reversed string: " + reverseString(originalString));
+                    break;
+                case 4:
+                    String reversedString = reverseString(originalString);
+                    System.out.println("Concatenated string: " + originalString + reversedString);
+                    break;
+                case 5:
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+            }
+        }
+    }
+
+    public static boolean isPalindrome(String str) {
+        String reversed = reverseString(str);
+        return str.equalsIgnoreCase(reversed);
+    }
+
+    public static String alphabeticalOrder(String str) {
+        char[] chars = str.toCharArray();
+        Arrays.sort(chars);
+        return new String(chars);
+    }
+
+    public static String reverseString(String str) {
+        char[] reversed = new char[str.length()];
+        for (int i = 0; i < str.length(); i++) {
+            reversed[i] = str.charAt(str.length() - 1 - i);
+        }
+        return new String(reversed);
+    }
+}
