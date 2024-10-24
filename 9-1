@@ -11,15 +11,19 @@ public class Question1 {
         }
 
         String text = input.toString();
-        int characterCount = text.length();
+        int characterCount = countCharactersExcludingNewlines(text);
         int wordCount = text.trim().split("\\s+").length;
         int lineCount = text.split("\n").length;
         int vowelCount = countVowels(text);
 
-        System.out.println("Number of characters: " + characterCount);
+        System.out.println("Number of characters (excluding newlines): " + characterCount);
         System.out.println("Number of words: " + wordCount);
         System.out.println("Number of lines: " + lineCount);
         System.out.println("Number of vowels: " + vowelCount);
+    }
+
+    public static int countCharactersExcludingNewlines(String text) {
+        return text.replace("\n", "").length();  // Exclude newlines but keep other characters like spaces
     }
 
     public static int countVowels(String text) {
