@@ -1,0 +1,25 @@
+import java.util.Scanner;
+
+public class Question2 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int[] numbers = new int[5];
+        
+        System.out.println("Enter 5 numbers:");
+        
+        for (int i = 0; i < 7; i++) {
+            try {
+                System.out.print("Number " + (i + 1) + ": ");
+                numbers[i] = sc.nextInt();
+            } catch (ArrayIndexOutOfBoundsException e) {
+                System.out.println("Array overflow! You can only enter 5 numbers.");
+                break;
+            }
+        }
+        
+        System.out.println("You entered:");
+        for (int number : numbers) {
+            System.out.print(number + " ");
+        }
+    }
+}
